@@ -1,0 +1,68 @@
+#include <RedBot.h> 
+RedBotMotors motors;
+int lCount;
+int rCount;
+int offset = 5;
+long prevlCount, prevrCount;
+long lDiff, rDiff;
+char index;
+int ind1;
+int ind2;
+int ind3;
+int ind4;
+int ind5;
+int ind6;
+int ind7;
+String a;
+String b;
+String c;
+String d;
+String e;
+String f;
+String g;
+String h;
+int aa=0;
+int bb=0;
+int cc;
+int dd;
+int ee;
+int ff;
+int ch =0;
+void setup() {   
+  Serial.begin(9600);
+
+   
+}
+void loop() {
+  if (Serial.available()) {        
+      c = Serial.readString();    
+      //Serial.println(b);
+      //Serial.println(ch); 
+      ind1 = c.indexOf(';');
+      //Serial.println(ind1);
+      a = c.substring(0, ind1);
+      //Serial.println(a);
+      ind2 = c.indexOf(';', ind1+1);  
+      b = c.substring(ind1+1,ind2+1);
+     
+
+      aa = a.toInt();
+      bb = b.toInt();
+      if(aa==50)
+      {
+      motors.rightMotor(50);
+      motors.leftMotor(-50);
+      }
+      if(aa==-50){
+      motors.rightMotor(-50);
+      motors.leftMotor(50);  
+      }
+      else
+      motors.rightMotor(-aa);
+      motors.leftMotor(-bb);
+      
+        
+       } 
+
+ 
+  }
